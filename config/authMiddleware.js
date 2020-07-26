@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
-const {users} = require("../models");
+const {users} = require("../model");
 
 dotenv.config();
 
@@ -52,7 +52,7 @@ const checkRole = async (req, res, next) => {
     );
 
     console.log(data, "data from decoded checkRole middleware");
-    if (data["role.name"] === "admin") {
+    if (data.role_id === 1) {
       return next();
     } else {
       return res.status(200).send({
