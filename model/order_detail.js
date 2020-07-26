@@ -10,8 +10,6 @@ model.init({
     },
     order_id: Sequelize.INTEGER,
     buku_id: Sequelize.INTEGER,
-    title: Sequelize.STRING,
-    harga: Sequelize.INTEGER,
     quantity: Sequelize.INTEGER,
     total: Sequelize.INTEGER,
     created_at: Sequelize.DATE,
@@ -25,8 +23,8 @@ model.init({
     timestamps: true,
     paranoid: true,
     sequelize: sequelizeConfig,
-    modelName: 'orders_detail',
-    tableName: 'orders_detail',
+    modelName: 'order_detail',
+    tableName: 'order_detail',
 });
 
 module.exports = model;

@@ -9,21 +9,12 @@ model.init({
         autoIncrement: true
     },
     name: Sequelize.STRING,
-    role_id: Sequelize.INTEGER,
-    username: Sequelize.STRING,
-    password: Sequelize.STRING,
-    created_at: Sequelize.DATE,
-    updated_at: Sequelize.DATE,
-    deleted_at: Sequelize.DATE,
 }, {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
-    deletedAt: 'deleted_at',
     freezeTableName: true,
     timestamps: true,
     sequelize: sequelizeConfig,
-    modelName: 'users',
-    tableName: 'users',
+    modelName: 'user_role',
+    tableName: 'user_role',
 });
 
 module.exports = model;

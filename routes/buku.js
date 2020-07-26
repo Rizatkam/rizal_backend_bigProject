@@ -4,7 +4,7 @@ const express = require('express');
 const app = express.Router();
 
 const { buku } = require('../controllers');
-const middleware = require('../config/middleware');
+const middleware = require('../config/authMiddleware');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -31,9 +31,9 @@ const upload = multer({
 const uploadAsync = util.promisify(upload.single('image_url'))
 
 app.get('/', buku.get_list);
-app.post('/', uploadAsync, middleware, buku.create);
+app.post('/', middleware.userAuth,middleware.checkRole, uploadAsync, buku.create);
 app.get('/:id', buku.get_by_id);
-app.put('/:id', middleware, buku.update_by_id);
-app.delete('/:id', middleware, buku.delete_by_id);
+app.put('/:id', middleware.userAuth,middleware.checkRole, uploadAsync, buku.update_by_id);
+app.delete('/:id', middleware.userAuth,middleware.checkRole, buku.delete_by_id);
 
 module.exports=app;

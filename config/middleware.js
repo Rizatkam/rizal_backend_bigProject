@@ -12,7 +12,8 @@ module.exports = async (req, res, next) => {
             expiresIn: '1d',
             audience: 'http://contoh.com',
         }
-        const data = await jwt.verify(req.headers.authorization, process.env.JWT_SECRET, sign_token);
+        const data = await jwt.verify(req.headers.authorization, 
+            process.env.JWT_SECRET, sign_token);
         return next();
     } catch (err) {
         return res.status(400).send({

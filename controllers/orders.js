@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const {
     orders,
-    orders_detail,
+    order_detail,
     users
 } = require('../model');
 
@@ -11,8 +11,8 @@ const create = async (req, res) => {
         const data = await orders.create(params, {
             include: [
                 {
-                    model: orders_detail,
-                    as: 'orders_detail'
+                    model: order_detail,
+                    as: 'order_detail'
                 }
             ]
         });
@@ -37,8 +37,8 @@ const get_by_id = async (req, res) => {
                         as: 'customers_detail'
                     },
                     {
-                        model: orders_detail,
-                        as: 'orders_detail'
+                        model: order_detail,
+                        as: 'order_detail'
                     }
                 ]
             });
@@ -76,8 +76,8 @@ const get_list = async (req, res) => {
                     as: 'customers_detail'
                 },
                 {
-                    model: orders_detail,
-                    as: 'orders_detail',
+                    model: order_detail,
+                    as: 'order_detail',
                 }
             ]
         };
