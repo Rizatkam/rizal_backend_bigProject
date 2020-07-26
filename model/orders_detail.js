@@ -8,7 +8,7 @@ model.init({
         primaryKey: true,
         autoIncrement: true
     },
-    orders_id: Sequelize.INTEGER,
+    order_id: Sequelize.INTEGER,
     buku_id: Sequelize.INTEGER,
     title: Sequelize.STRING,
     harga: Sequelize.INTEGER,

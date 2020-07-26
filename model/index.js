@@ -9,8 +9,8 @@ kategori.hasMany(buku, { foreignKey: 'kategori_id', as:'buku' });
 buku.belongsTo(kategori, { foreignKey: 'kategori_id', as:'kategori' });
 
 //orders dengan orders_detail
-orders.hasMany(orders_detail, { foreignKey: 'orders_id', as:'orders_detail' });
-orders_detail.belongsTo(orders, { foreignKey: 'orders_id', as:'orders' });
+orders.hasMany(orders_detail, { foreignKey: 'order_id', as:'orders_detail' });
+orders_detail.belongsTo(orders, { foreignKey: 'order_id', as:'orders' });
 
 //users dengan orders
 users.hasMany(orders, { foreignKey: 'user_id', as: 'orders' });
