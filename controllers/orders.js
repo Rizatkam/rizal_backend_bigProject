@@ -5,7 +5,6 @@ const {
     users
 } = require('../model');
 
-// function untuk create
 const create = async (req, res) => {
     try {
         const params = (req.body);
@@ -17,7 +16,6 @@ const create = async (req, res) => {
                 }
             ]
         });
-        // return dengan status sukses
         return res.status(200).send({
             message: 'OK',
             data,
@@ -28,11 +26,9 @@ const create = async (req, res) => {
         })
     }
 }
-// function get detail kategori by ID
+
 const get_by_id = async (req, res) => {
     try {
-        // find detail by PK,
-        // jika tidak di temukan, akan di reject
         const data = await orders.findByPk(req.params.id,
             {
                 include: [
@@ -51,7 +47,6 @@ const get_by_id = async (req, res) => {
                 message: 'ID tidak ditemukan',
             })
         }
-        // return dengan status sukses
         return res.status(200).send({
             message: 'OK',
             data,
@@ -62,6 +57,7 @@ const get_by_id = async (req, res) => {
         })
     }
 }
+
 const get_list = async (req, res) => {
     try {
         const params = (req.query);
@@ -88,10 +84,8 @@ const get_list = async (req, res) => {
         if (params.title) query.where.user_id = {
             [Op.like]: `%${params.user_id}%`,
         };
-        // Sorting
         if (params.sort_by && params.sort_type) query.order =
             [[params.sort_by, params.sort_type]];
-        // Pagination
         if (params.limit) query.limit = Number(params.limit);
         if (params.page) query.offset = Number(query.limit) *
             ((Number(params.page || 1) || 1) - 1);
@@ -99,7 +93,6 @@ const get_list = async (req, res) => {
         data.limit = query.limit;
         data.offset = query.offset;
         data.page = (query.offset / query.limit) + 1;
-        // return dengan status sukses
         return res.status(200).send({
             message: 'OK',
             data,
@@ -110,6 +103,7 @@ const get_list = async (req, res) => {
         })
     }
 }
+
 module.exports = {
     create,
     get_by_id,

@@ -30,10 +30,10 @@ const upload = multer({
       } });
 const uploadAsync = util.promisify(upload.single('image_url'))
 
-app.get('/', buku.get_list);//public api
-app.post('/', uploadAsync, middleware, buku.create); // restricted api
-app.get('/:id', buku.get_by_id);//public api
-app.put('/:id', middleware, buku.update_by_id);//restricted api
-app.delete('/:id', middleware, buku.delete_by_id);//restricted api
+app.get('/', buku.get_list);
+app.post('/', uploadAsync, middleware, buku.create);
+app.get('/:id', buku.get_by_id);
+app.put('/:id', middleware, buku.update_by_id);
+app.delete('/:id', middleware, buku.delete_by_id);
 
 module.exports=app;

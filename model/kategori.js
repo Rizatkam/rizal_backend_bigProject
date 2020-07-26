@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelizeConfig = require('../config/sequelize');
+
 class model extends Sequelize.Model { }
 model.init({
     id: {
@@ -21,4 +22,5 @@ model.init({
     modelName: 'kategori',
     tableName: 'kategori',
 });
+
 module.exports = model;
