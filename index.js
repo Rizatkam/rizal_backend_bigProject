@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/users',routes.users);
 app.use('/buku',routes.buku);
+app.use('/kategori',routes.kategori);
 app.use('/orders',routes.orders);
 
 app.listen(port, () => console.log(`BackEnd Project Listening at
