@@ -8,9 +8,9 @@ model.init({
         primaryKey: true,
         autoIncrement: true
     },
-    name: Sequelize.STRING,
     role_id: Sequelize.INTEGER,
-    username: Sequelize.STRING,
+    name: Sequelize.STRING,
+    email: Sequelize.STRING,
     password: Sequelize.STRING,
     created_at: Sequelize.DATE,
     updated_at: Sequelize.DATE,

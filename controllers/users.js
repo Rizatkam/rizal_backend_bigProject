@@ -9,8 +9,8 @@ const register = async (req, res) => {
         const params = req.body;
         const duplicated = await users.findOne({
             where: {
-                username:
-                    params.username
+                email:
+                    params.email
             }
         });
         if (duplicated) {
@@ -37,7 +37,7 @@ const login = async (req, res) => {
         const params = req.body;
         const query = {
             where: {
-                username: params.username
+                email: params.email
             },
             raw: true
         };
