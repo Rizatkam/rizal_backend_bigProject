@@ -4,7 +4,7 @@ const express = require('express');
 const app = express.Router();
 
 const { buku } = require('../controllers');
-const middleware = require('../config/authMiddleware');
+const middleware = require('../config/middleware');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

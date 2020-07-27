@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {
-    users,user_role
+    users
 } = require('../model');
 
 const register = async (req, res) => {
@@ -15,7 +15,7 @@ const register = async (req, res) => {
         });
         if (duplicated) {
             return res.status(400).send({
-                message: 'username telah terpakai',
+                message: 'email telah terpakai',
             })
         }
         params.password = await bcrypt.hashSync(req.body.password,
@@ -44,14 +44,14 @@ const login = async (req, res) => {
         const user = await users.findOne(query);
         if (!user) {
             return res.status(400).send({
-                message: 'username tidak ditemukan',
+                message: 'Email tidak ditemukan. Mohon untuk registrasi.',
             })
         }
         const compare_password =
             bcrypt.compareSync(params.password, user.password);
         if (!compare_password) {
             return res.status(400).send({
-                message: 'password tidak sama',
+                message: 'Password anda salah!',
             })
         }
         const sign_token = {
