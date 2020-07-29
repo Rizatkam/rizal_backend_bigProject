@@ -2,6 +2,7 @@ const { Op } = require('sequelize');
 const {
     buku,
     kategori,
+    status
 } = require('../model');
 
 const create = async (req, res) => {
@@ -27,6 +28,10 @@ const get_by_id = async (req, res) => {
                     {
                         model: kategori,
                         as: 'kategori'
+                    },
+                    {
+                        model: status,
+                        as:'status'
                     }
                 ]
         });
@@ -106,6 +111,10 @@ const get_list = async (req, res) => {
                 {
                     model: kategori,
                     as: 'kategori'
+                },
+                {
+                    model: status,
+                    as:'status'
                 }
             ]
         };

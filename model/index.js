@@ -1,5 +1,6 @@
 const users = require('./users'); // define users
 const kategori= require('./kategori');
+const status=require('./buku_status');
 const buku= require('./buku');
 const orders = require('./orders');
 const order_detail = require('./order_detail');
@@ -8,6 +9,10 @@ const user_role= require('./user_role');
 //kategori dengan buku
 kategori.hasMany(buku, { foreignKey: 'kategori_id', as:'buku' });
 buku.belongsTo(kategori, { foreignKey: 'kategori_id', as:'kategori' });
+
+//status dengan buku
+status.hasMany(buku, { foreignKey: 'status_id', as:'buku' });
+buku.belongsTo(status, { foreignKey: 'status_id', as:'status' });
 
 //orders dengan order_detail
 orders.hasMany(order_detail, { foreignKey: 'order_id', as:'order_detail' });
@@ -28,6 +33,7 @@ users.belongsTo(user_role, { foreignKey: 'role_id', as:'user_role' });
 module.exports = {
     users,
     kategori,
+    status,
     buku,
     orders,
     order_detail,

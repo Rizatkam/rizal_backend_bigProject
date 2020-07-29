@@ -9,6 +9,7 @@ model.init({
         autoIncrement: true
     },
     kategori_id: Sequelize.INTEGER,
+    status_id: Sequelize.INTEGER,
     title: Sequelize.STRING,
     harga: Sequelize.INTEGER,
     author: Sequelize.INTEGER,
