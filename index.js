@@ -8,6 +8,7 @@ const routes = require ('./routes');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('public'));
 app.use('/users',routes.users);
 app.use('/buku',routes.buku);
 app.use('/kategori',routes.kategori);

@@ -51,7 +51,7 @@ const checkRole = async (req, res, next) => {
       sign_token
     );
 
-    console.log(data, "data from decoded checkRole middleware");
+    // console.log(data, "data from decoded checkRole middleware");
     if (data.role_id === 1) {
       return next();
     } else {

@@ -7,7 +7,7 @@ const {
 
 const create = async (req, res) => {
     try {
-        const params = {...req.body, ...{image_url: req.file.path}};
+        const params = {...req.body, ...{image_url: req.file.path.slice(7)}};
         const data = await buku.create(params);
         return res.status(200).send({
             message: 'OK',
@@ -53,7 +53,7 @@ const get_by_id = async (req, res) => {
 
 const update_by_id = async (req, res) => {
     try {
-        const params = {...req.body, ...{image_url: req.file.path}};
+        const params = {...req.body};
         const data = await buku.findByPk(req.params.id);
         if (!data) {
             return res.status(400).send({
@@ -68,6 +68,7 @@ const update_by_id = async (req, res) => {
             data,
         });
     } catch (err) {
+        console.log(err)
         return res.status(400).send({
             message: err.message,
         })
