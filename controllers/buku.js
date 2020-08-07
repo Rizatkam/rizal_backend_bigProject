@@ -106,6 +106,7 @@ const get_list = async (req, res) => {
         {
           model: kategori,
           as: "kategori",
+          // where:
         },
         {
           model: status,
@@ -120,6 +121,10 @@ const get_list = async (req, res) => {
     if (params.author)
       query.where.author = {
         [Op.like]: `%${params.author}%`,
+      };
+    if (params.kategori_id)
+      query.where.kategori_id = {
+        [Op.like]: `%${params.kategori_id}%`,
       };
     if (params.sort_by && params.sort_type)
       query.order = [[params.sort_by, params.sort_type]];
