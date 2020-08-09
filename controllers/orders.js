@@ -34,8 +34,7 @@ const get_by_id = async (req, res) => {
         {
           model: orders_detail,
           as: "orders_detail",
-        },
-        { model: buku, as: "buku" },
+        }
       ],
     });
     if (!data) {
@@ -72,8 +71,7 @@ const get_list = async (req, res) => {
         {
           model: orders_detail,
           as: "orders_detail",
-        },
-        { model: buku, as: "buku" },
+        }
       ],
     };
     if (params.title)
