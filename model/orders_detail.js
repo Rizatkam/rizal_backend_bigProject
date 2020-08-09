@@ -23,8 +23,8 @@ model.init({
     timestamps: true,
     paranoid: true,
     sequelize: sequelizeConfig,
-    modelName: 'order_detail',
-    tableName: 'order_detail',
+    modelName: 'orders_detail',
+    tableName: 'orders_detail',
 });
 
 module.exports = model;
