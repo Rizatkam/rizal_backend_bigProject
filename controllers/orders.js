@@ -74,7 +74,7 @@ const get_list = async (req, res) => {
         }
       ],
     };
-    if (params.title)
+    if (params.user_id)
       query.where.user_id = {
         [Op.like]: `%${params.user_id}%`,
       };
