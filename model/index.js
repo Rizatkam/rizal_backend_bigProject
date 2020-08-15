@@ -13,7 +13,7 @@ buku.belongsTo(kategori, { foreignKey: "kategori_id", as: "kategori" });
 
 //buku_status dengan buku
 buku_status.hasMany(buku, { foreignKey: "status_id", as: "buku" });
-buku.belongsTo(buku_status, { foreignKey: "status_id", as: "buku_status" });
+buku.belongsTo(buku_status, { foreignKey: "status_id", as: "status" });
 
 //orders dengan orders_detail
 orders.hasMany(orders_detail, { foreignKey: "order_id", as: "orders_detail" });

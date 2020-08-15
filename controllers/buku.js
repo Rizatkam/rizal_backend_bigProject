@@ -26,7 +26,7 @@ const get_by_id = async (req, res) => {
         },
         {
           model: buku_status,
-          as: "buku_status",
+          as: "status",
         },
       ],
     });
@@ -110,7 +110,7 @@ const get_list = async (req, res) => {
         },
         {
           model: buku_status,
-          as: "buku_status",
+          as: "status",
         },
       ],
     };
