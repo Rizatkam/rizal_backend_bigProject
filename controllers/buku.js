@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { buku, kategori, status } = require("../model");
+const { buku, kategori, buku_status } = require("../model");
 
 const create = async (req, res) => {
   try {
@@ -25,8 +25,8 @@ const get_by_id = async (req, res) => {
           as: "kategori",
         },
         {
-          model: status,
-          as: "status",
+          model: buku_status,
+          as: "buku_status",
         },
       ],
     });
@@ -109,8 +109,8 @@ const get_list = async (req, res) => {
           // where:
         },
         {
-          model: status,
-          as: "status",
+          model: buku_status,
+          as: "buku_status",
         },
       ],
     };

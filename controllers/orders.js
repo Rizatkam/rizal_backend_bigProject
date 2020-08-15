@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { orders, orders_detail, users, buku } = require("../model");
+const { orders, orders_detail, users } = require("../model");
 
 const create = async (req, res) => {
   try {

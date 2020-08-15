@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 09, 2020 at 08:06 AM
+-- Generation Time: Aug 15, 2020 at 03:24 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -55,7 +55,7 @@ INSERT INTO `buku` (`id`, `kategori_id`, `status_id`, `title`, `harga`, `author`
 (5, 5, 1, 'Hidroponik; Bertanam Sayuran Tanpa Tanah', 99000, 'Mukhiban Isnan', 'images/image_url-1596015355434.jpeg', '9789790066489', 0, 'Hidroponik telah dikenal dan dipraktikkan di dalam negeri sejak tahun 1980-an. Saat ini, hidroponik, terutama skala rumah tangga, telah merambah menjadi hobi dan pemenuhan kebutuhan rumah tangga terhadap sayur serta buah. Kepopuleran tren hidroponik memunculkan penghobi hidroponik baru yang membutuhkan berbagai informasi dasar mengenai hidroponik.\nPenulis dengan mengusung nama Hidroponik Untuk Semua yang selama ini fokus pada budi daya hidroponik dan rutin mengadakan pelatihan hidroponik (untuk pemula hingga pelatihan hidroponik skala industri) di berbagai daerah, mencoba membagikan pengalamannya melalui buku ini.\nPenulis berharap semakin banyak masyarakat yang memahami teknik dasar hidroponik secara tepat, sehingga dapat dipraktikkan dengan baik sebagai sarana hobi, menambah keasrian sekitar rumah dan lingkungan, serta dapat menghasilkan sayuran yang sehat untuk konsumsi keluarga.', '2020-07-29 09:35:55', '2020-07-29 22:47:52', NULL),
 (6, 6, 1, 'Pengantar Ilmu Politik', 85000, 'Inu Kencana Syafiie', 'images/image_url-1596015467787.jpeg', '9786021311486', 1, 'Berisi Materi Dasar Ilmu Politik.', '2020-07-29 09:37:47', '2020-08-06 16:23:31', NULL),
 (7, 7, 1, 'Sistem Basis Data Dan Sql', 95000, 'Didik Setiyadi, S.Kom., M.Kom', 'images/image_url-1596015580207.jpeg', '9786023184385', 0, 'Apa yang disajikan dalam buku ini adalah bagaimana memahami tentang konsep sistem basis data dan perancangan basis data dengan konsep normalisasi data dan implementasinya kedalam bahasa SQL (Structured Query Language).', '2020-07-29 09:39:40', '2020-07-29 22:48:27', NULL),
-(14, 7, 2, 'sdfsdgsg', 25000, 'Rizal Satria', 'images/image_url-1596708484155.png', '135454', 12, 'asfasdfsadf', '2020-08-06 10:08:04', '2020-08-06 10:08:04', NULL);
+(15, 6, 1, 'sdfsdgsg', 25000, 'Rizal Satria', 'images/image_url-1597413510104.png', '156454', 1, 'sadfsdfgsdgsdgsdgsd', '2020-08-14 13:58:30', '2020-08-14 13:58:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,6 +78,25 @@ CREATE TABLE `buku_status` (
 INSERT INTO `buku_status` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'FOR SELL', '2020-07-29 15:30:10', '2020-07-29 15:30:10', NULL),
 (2, 'OUT OF STOCK', '2020-07-29 15:30:10', '2020-07-29 15:30:10', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `buku_id` int(11) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `quantity` int(20) NOT NULL,
+  `harga` int(15) NOT NULL,
+  `total` int(20) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -126,7 +145,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `total`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(5, 8, 85000, '2020-08-09 05:38:25', '2020-08-09 05:38:25', NULL);
+(24, 8, 95000, '2020-08-15 00:02:29', '2020-08-15 00:02:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -152,7 +171,7 @@ CREATE TABLE `orders_detail` (
 --
 
 INSERT INTO `orders_detail` (`id`, `order_id`, `buku_id`, `title`, `quantity`, `harga`, `total`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(3, 5, 3, 'Perencanaan Bisnis', 1, 85000, 85000, '2020-08-09 05:38:25', '2020-08-09 05:38:25', NULL);
+(15, 24, 7, 'Sistem Basis Data Dan Sql', 1, 95000, 95000, '2020-08-15 00:02:29', '2020-08-15 00:02:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -177,7 +196,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `password`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (3, 1, 'Rizal Satria Kamal', 'rizalsatriakamal@gmail.com', '$2b$10$fLpEfv.TmIYSB4EQSc98VORn/tWy2CqouhkRnaFBJ0opXJGEkPRFW', '2020-07-29 00:21:59', '2020-07-29 00:21:59', NULL),
-(8, 2, 'Risaka', 'apapun@gmail.com', '$2b$10$62Z8bGIBhG/h6s6kNceJBO.KA9R7do44rryYb1OhUpizcu6i9W1wG', '2020-07-30 08:19:26', '2020-07-30 08:19:26', NULL);
+(8, 2, 'Risaka', 'apapun@gmail.com', '$2b$10$62Z8bGIBhG/h6s6kNceJBO.KA9R7do44rryYb1OhUpizcu6i9W1wG', '2020-07-30 08:19:26', '2020-07-30 08:19:26', NULL),
+(9, 2, 'Rizal Satria', 'ngarang@gmail.cam', '$2b$10$HbkYYoHvpd9f.EQTS/8wOu0u2E59P6tXmjiTqpEuwLQjHSWdgga6y', '2020-08-14 13:50:46', '2020-08-14 13:50:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -218,6 +238,14 @@ ALTER TABLE `buku`
 --
 ALTER TABLE `buku_status`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `buku_id` (`buku_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `kategori`
@@ -262,13 +290,19 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `buku_status`
 --
 ALTER TABLE `buku_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -280,19 +314,19 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `orders_detail`
 --
 ALTER TABLE `orders_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -310,6 +344,13 @@ ALTER TABLE `user_role`
 ALTER TABLE `buku`
   ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`),
   ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `buku_status` (`id`);
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`),
+  ADD CONSTRAINT `cart_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `orders`
