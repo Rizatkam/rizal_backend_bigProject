@@ -4,11 +4,32 @@ const { cart, buku, users } = require("../model");
 const create = async (req, res) => {
   try {
     const params = req.body;
-    const data = await cart.create(params);
-    return res.status(200).send({
-      message: "OK",
-      data,
-    });
+    const query = {
+      where: {
+        user_id: params.user_id,
+        buku_id: params.buku_id,
+      },
+    };
+    const data = await cart.findOne(query);
+    if (data) {
+      const object = {
+        quantity: data.quantity + params.quantity,
+        total: data.total + params.total,
+      };
+      data.set(object);
+      data.save();
+      data.get();
+      return res.status(200).send({
+        message: "OK",
+        data,
+      });
+    } else {
+      const data = await cart.create(params);
+      return res.status(200).send({
+        message: "OK",
+        data,
+      });
+    }
   } catch (err) {
     return res.status(400).send({
       message: err.message,

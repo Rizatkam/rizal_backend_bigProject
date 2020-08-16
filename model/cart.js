@@ -25,7 +25,7 @@ model.init(
     deletedAt: "deleted_at",
     freezeTableName: true,
     timestamps: true,
-    paranoid: true,
+    paranoid: false,
     sequelize: sequelizeConfig,
     modelName: "cart",
     tableName: "cart",
